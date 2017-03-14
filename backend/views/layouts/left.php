@@ -34,8 +34,10 @@
                     ['label' => 'Main Menu', 'options' => ['class' => 'header']],
                     ['label' => 'Home', 'icon' => 'fa fa-home', 'url' => ['/site/index']],
                     ['label' => 'Change Password', 'icon' => 'fa fa-lock', 'url' => ['/profile/change-password']],
-                ],
-            ]
+                    ['label' => 'Portfolio', 'icon' => 'fa fa-lock', 'url' => ['/portfolio']],
+                    ['label' => 'About', 'icon' => 'fa fa-lock', 'url' => ['/about']],
+                    ['label' => 'Team', 'icon' => 'fa fa-lock', 'url' => ['/team']]
+            ]]
         ) ?>
 
     </section>
