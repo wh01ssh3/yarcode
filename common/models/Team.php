@@ -29,7 +29,8 @@ class Team extends \yii\db\ActiveRecord
     {
         return [
             [['description'], 'string'],
-            [['title', 'image'], 'string', 'max' => 255],
+            [['title'], 'string', 'max' => 255],
+            [['image'], 'file']
         ];
     }
 
@@ -43,6 +44,18 @@ class Team extends \yii\db\ActiveRecord
             'title' => 'Title',
             'description' => 'Description',
             'image' => 'Image',
+        ];
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => '\yiidreamteam\upload\FileUploadBehavior',
+                'attribute' => 'image',
+                'filePath' => '@webroot/../../frontend/web/uploads/[[pk]].[[extension]]',
+                'fileUrl' => '/uploads/[[pk]].[[extension]]',
+            ],
         ];
     }
 }
