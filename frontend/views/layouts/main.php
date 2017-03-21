@@ -22,25 +22,36 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body>
+<!-- Header -->
+<header>
+    <div class="container">
+        <div class="intro-text">
+            <div class="intro-lead-in">Welcome To Our Studio!</div>
+            <div class="intro-heading">It's Nice To Meet You</div>
+            <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>
+        </div>
+    </div>
+</header>
+<body id="page-top" class="index">
 <?php $this->beginBody() ?>
 
 <div class="wrap">
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
     <?php
     NavBar::begin([
         'brandLabel' => 'YarCode',
-        //'brandUrl' => Yii::$app->homeUrl,
-        'brandUrl' => "#page-top",
+        'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-brand navbar-fixed-top page-scroll',
-            //'class' => 'navbar-brand page-scroll',
+            'class' => 'navbar page-scroll',
         ],
     ]);
     $menuItems = [
-        ['label' => 'Portfolio', 'url' => ['/site/index']],
+        ['label' => 'Portfolio', 'url' => ['#portfolio']],
         ['label' => 'About', 'url' => ['#about']],
         ['label' => 'Team', 'url' => ['#team']],
-        //['label' => 'Portfolio', 'url' => ['/site/portfolio']]
+        ['label' => 'Contact', 'url' => ['#contact']],
+
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
@@ -60,7 +71,10 @@ AppAsset::register($this);
     ]);
     NavBar::end();
     ?>
-
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
     <div class="container">
         <?= AlertBlock::widget([
             'useSessionFlash' => true,
@@ -75,8 +89,30 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; YarCode <?= date('Y') ?></p>
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <div class="row">
+            <div class="col-md-4">
+                <p class="pull-left">&copy; YarCode <?= date('Y') ?></p>
+                <p class="pull-right"><?= Yii::powered() ?></p>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-inline social-buttons">
+                    <li><a href="#"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-inline quicklinks">
+                    <li><a href="/site/policy">Privacy Policy</a>
+                    </li>
+                    <li><a href="/site/terms">Terms of Use</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </footer>
 

@@ -9,6 +9,9 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use common\models\Team;
+use common\models\About;
+use common\models\Portfolio;
+use common\models\Contact;
 use frontend\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
@@ -68,9 +71,41 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+
         return $this->render('index', [
-            'teams'=>Team::find()->all()
+            'abouts'=>About::find()->all(),
+            'teams'=>Team::find()->all(),
+            'portfolios'=>Portfolio::find()->all()
         ]);
+
+    }
+
+    public function actionTerms()
+    {
+        return $this->render('terms_of_use');
+    }
+
+    public function actionPolicy()
+    {
+        return $this->render('privacy_policy');
+    }
+
+    /**
+     * Creates a new About model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionContact()
+    {
+        $model = new Contact();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
     }
 
     /**

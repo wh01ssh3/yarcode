@@ -14,6 +14,18 @@ use Yii;
  */
 class About extends \yii\db\ActiveRecord
 {
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => '\yiidreamteam\upload\FileUploadBehavior',
+                'attribute' => 'image',
+                'filePath' => '@webroot/../../frontend/web/uploadsAbout/[[pk]].[[extension]]',
+                'fileUrl' => '/uploadsAbout/[[pk]].[[extension]]',
+            ],
+        ];
+    }
+
     /**
      * @inheritdoc
      */
@@ -29,7 +41,8 @@ class About extends \yii\db\ActiveRecord
     {
         return [
             [['description'], 'string'],
-            [['title', 'image'], 'string', 'max' => 255],
+            [['title'], 'string', 'max' => 255],
+            [['image'], 'file']
         ];
     }
 

@@ -14,6 +14,18 @@ use Yii;
  */
 class Portfolio extends \yii\db\ActiveRecord
 {
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => '\yiidreamteam\upload\FileUploadBehavior',
+                'attribute' => 'image',
+                'filePath' => '@webroot/../../frontend/web/uploadsPortfolio/[[pk]].[[extension]]',
+                'fileUrl' => '/uploadsPortfolio/[[pk]].[[extension]]',
+            ],
+        ];
+    }
+
     /**
      * @inheritdoc
      */
@@ -29,7 +41,8 @@ class Portfolio extends \yii\db\ActiveRecord
     {
         return [
             [['description'], 'string'],
-            [['title', 'image'], 'string', 'max' => 255],
+            [['title', 'category'], 'string', 'max' => 255],
+            [['image'], 'file']
         ];
     }
 
