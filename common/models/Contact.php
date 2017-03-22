@@ -15,6 +15,7 @@ use Yii;
  */
 class Contact extends \yii\db\ActiveRecord
 {
+
     /**
      * @inheritdoc
      */

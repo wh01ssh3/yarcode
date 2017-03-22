@@ -151,7 +151,35 @@ $this->title = 'Frontend';
             </div>
         </div>
 </section>
-<!-- Contact Section -->
+<section id="contact">
+<div class="site-login">
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <p>Please fill out the following fields to login:</p>
+    <div class="row">
+        <div class="col-lg-5">
+            <?php
+            $model = new \common\models\Contact();
+            $form = ActiveForm::begin(['id' => 'contact-form']); ?>
+
+            <?= $form->field($model, 'name')->textInput() ?>
+
+            <?= $form->field($model, 'email')->textInput() ?>
+
+            <?= $form->field($model, 'phone')->textInput() ?>
+
+            <?= $form->field($model, 'message')->textInput() ?>
+
+            <div class="form-group">
+                <?= Html::submitButton('Send Message', ['class' => 'btn btn-primary', 'name' => 'message-button']) ?>
+            </div>
+
+            <?php ActiveForm::end(); ?>
+        </div>
+    </div>
+</div>
+</section>
+<!-- Contact Section
 <section id="contact">
     <div class="container">
         <div class="row">
@@ -163,38 +191,33 @@ $this->title = 'Frontend';
         <div class="row">
             <div class="col-lg-12">
                 <form name="sentMessage" id="contactForm" novalidate>
-                    <?php
-                    $form = ActiveForm::begin([
-                      'id' => 'contact',
-                      'options' => ['class' => 'form-control'],
-                    ]);
-                    $model = new \common\models\Contact();?>
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                 <?= $form->field($model, 'name')->textInput()?>
+
                             </div>
                             <div class="form-group">
-                                <?= $form->field($model, 'email')->textInput()?>
+
                             </div>
                             <div class="form-group">
-                                <?= $form->field($model, 'phone')->textInput()?>
+
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <?= $form->field($model, 'message')->textInput()?>
+
                             </div>
                         </div>
                         <div class="clearfix"></div>
                         <div class="col-lg-12 text-center">
                             <div id="success"></div>
-                            <?= Html::submitButton('Contact us!', ['class' => 'btn btn-primary']) ?>
+
                         </div>
                     </div>
-                    <?php ActiveForm::end() ?>
+
                 </form>
             </div>
         </div>
     </div>
-</section>
+</section>-->

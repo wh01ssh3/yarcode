@@ -71,12 +71,20 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-
-        return $this->render('index', [
-            'abouts'=>About::find()->all(),
-            'teams'=>Team::find()->all(),
-            'portfolios'=>Portfolio::find()->all()
-        ]);
+        $model = new Contact();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->render('success', [
+                'portfolios' => Portfolio::find()->all(),
+                'abouts' => About::find()->all(),
+                'teams' => Team::find()->all(),
+            ]);
+        }else {
+            return $this->render('index', [
+                'abouts' => About::find()->all(),
+                'teams' => Team::find()->all(),
+                'portfolios' => Portfolio::find()->all(),
+            ]);
+        }
 
     }
 
@@ -90,23 +98,6 @@ class SiteController extends Controller
         return $this->render('privacy_policy');
     }
 
-    /**
-     * Creates a new About model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionContact()
-    {
-        $model = new Contact();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
-    }
 
     /**
      * Logs in a user.
