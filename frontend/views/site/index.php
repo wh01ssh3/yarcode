@@ -153,27 +153,39 @@ $this->title = 'Frontend';
 </section>
 <section id="contact">
 <div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1>Send Message</h1>
 
-    <p>Please fill out the following fields to login:</p>
+    <p>Please fill out the following fields to send message:</p>
     <div class="row">
-        <div class="col-lg-5">
+        <div class="col-lg-12">
             <?php
             $model = new \common\models\Contact();
             $form = ActiveForm::begin(['id' => 'contact-form']); ?>
-
-            <?= $form->field($model, 'name')->textInput() ?>
-
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <?= $form->field($model, 'name')->textInput() ?>
+                    </div>
+                    <div class="form-group">
             <?= $form->field($model, 'email')->textInput() ?>
-
+                    </div>
+                    <div class="form-group">
             <?= $form->field($model, 'phone')->textInput() ?>
-
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
             <?= $form->field($model, 'message')->textInput() ?>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-lg-12 text-center">
+                    <div id="success"></div>
 
-            <div class="form-group">
                 <?= Html::submitButton('Send Message', ['class' => 'btn btn-primary', 'name' => 'message-button']) ?>
-            </div>
 
+                </div>
+            </div>
             <?php ActiveForm::end(); ?>
         </div>
     </div>

@@ -73,6 +73,11 @@ class SiteController extends Controller
     {
         $model = new Contact();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->mailer->compose('contact', ['model' => $model])
+                ->setFrom($model->email)
+                ->setTo('separise@gmail.com')
+                ->setSubject('Просьба связаться')
+                ->send();
             return $this->render('success', [
                 'portfolios' => Portfolio::find()->all(),
                 'abouts' => About::find()->all(),
