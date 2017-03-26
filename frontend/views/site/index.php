@@ -216,18 +216,18 @@ $this->title = 'Frontend';
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <?= $form->field($model, 'name')->textInput(['placeholder' => "Your name", 'required data-validation-required-message' => "Please enter a name."])->label(false) ?>
+                            <?= $form->field($model, 'name')->textInput(['placeholder' => "Your name", 'required data-validation-required-message' => "Please enter a name.", "id"=>"name"])->label(false) ?>
                         </div>
                         <div class="form-group">
-                            <?= $form->field($model, 'email')->textInput(['placeholder' => "Your email", 'required data-validation-required-message' => "Please enter a email."])->label(false) ?>
+                            <?= $form->field($model, 'email')->textInput(['placeholder' => "Your email", 'required data-validation-required-message' => "Please enter a email.", "id"=>"email"])->label(false) ?>
                         </div>
                         <div class="form-group">
-                            <?= $form->field($model, 'phone')->textInput(['placeholder' => "Your phone", 'required data-validation-required-message' => "Please enter a phone."])->label(false) ?>
+                            <?= $form->field($model, 'phone')->textInput(['placeholder' => "Your phone", 'required data-validation-required-message' => "Please enter a phone.", "id"=>"phone"])->label(false) ?>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <?= $form->field($model, 'message')->textarea(['rows' => 6, 'placeholder' => "Your message", 'required data-validation-required-message' => "Please enter a message."])->label(false) ?>
+                            <?= $form->field($model, 'message')->textarea(['rows' => 6, 'placeholder' => "Your message", 'required data-validation-required-message' => "Please enter a message.", "id"=>"message"])->label(false) ?>
                         </div>
                     </div>
                     <div class="clearfix"></div>
