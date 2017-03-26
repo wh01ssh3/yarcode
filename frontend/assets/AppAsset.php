@@ -16,6 +16,8 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/agency.min.js',
+        'js/jqBootstrapValidation.js',
+        'js/jquery.easing.min.js',
         'js/contact_me.js'
     ];
     public $depends = [

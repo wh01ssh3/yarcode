@@ -16,6 +16,11 @@ AppAsset::register($this);
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
@@ -44,13 +49,13 @@ AppAsset::register($this);
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar page-scroll',
-        ],
+        ]
     ]);
     $menuItems = [
-        ['label' => 'Portfolio', 'url' => ['#portfolio']],
-        ['label' => 'About', 'url' => ['#about']],
-        ['label' => 'Team', 'url' => ['#team']],
-        ['label' => 'Contact', 'url' => ['#contact']],
+        ['label' => 'Portfolio', 'url' => '#portfolio', 'linkOptions' => ['class' => 'page-scroll']],
+        ['label' => 'About', 'url' => '#about', 'linkOptions' => ['class' => 'page-scroll']],
+        ['label' => 'Team', 'url' => '#team', 'linkOptions' => ['class' => 'page-scroll']],
+        ['label' => 'Contact', 'url' => '#contact', 'linkOptions' => ['class' => 'page-scroll']],
 
     ];
     if (Yii::$app->user->isGuest) {
@@ -75,7 +80,7 @@ AppAsset::register($this);
         </div>
         <!-- /.container-fluid -->
     </nav>
-    <div class="container">
+
         <?= AlertBlock::widget([
             'useSessionFlash' => true,
             'type' => AlertBlock::TYPE_GROWL
@@ -84,7 +89,7 @@ AppAsset::register($this);
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= $content ?>
-    </div>
+
 </div>
 
 <footer class="footer">
